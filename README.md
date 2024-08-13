@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Shazam Clone in Next.js 🎵
 
-## Getting Started
+Created by Etai Gabbai on 8/13/2024
 
-First, run the development server:
+## How It Works 🤔
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This Shazam clone leverages a Next.js front-end to capture a 4-second audio sample. The sample is sent to a Google Cloud Function (backend) written in Python 3.10 for detection. The backend processes the audio and returns the result, including confidence scores, possible matches, and their respective song information.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Requirements
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js 14+
+- Node.js
+- Google Cloud CLI
+- Python 3.10
+- Flask
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation 👩‍💻
 
-## Learn More
+1. Clone the repository: `git clone https://github.com/DevEtaiGabbai/shazam-clone.git`
+2. Navigate to the project directory and run `npm install`
+3. Change directory to the `python` folder and install the dependencies: `pip install -r requirements.txt`
+4. Start the Google Cloud Function locally: `functions-framework --target=recognize`
+5. Rename `.env.example` to `.env.local` and set `NEXT_PUBLIC_GCF_URL` to `http://127.0.0.1:8080/recognize`
+6. Return to the project root directory and run the development server: `npm run dev`
+7. Open [localhost:3000](http://localhost:3000) in your browser and you're all set!
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing & Improving 📈
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The clone currently fulfills its basic purpose, but there’s always room for enhancement!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Feel free to dive into the code and contribute at any skill level. Here are some potential improvements:
 
-## Deploy on Vercel
+- [ ] Implement Light/Dark mode.
+- [ ] Add an authentication system to save Shazams under user accounts.
+- [ ] Refine the UI to better match the mobile app experience.
+- [x] Improve result speed with an upcoming ShazamAPI rewrite - still in the works 🔜
+- [ ] Incorporate a previous Shazam card feature similar to the mobile app.
+- [ ] Automatically add results to a Spotify playlist connected by the user.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Developers and Maintainers
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Etai Gabbai** - [GitHub](https://github.com/DevEtaiGabbai) (Original Creator)
+
+A special thanks to **@Numenorean** - [GitHub](https://github.com/Numenorean/) for creating the original [ShazamAPI](https://github.com/Numenorean/ShazamAPI).
