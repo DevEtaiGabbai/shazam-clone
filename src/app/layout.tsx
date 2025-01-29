@@ -8,7 +8,7 @@ import { GitHubStars } from "@/components/ui/GitHubStars";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Shazam Clone in Next.js and TS",
+  title: "Shazam Clone in Next.js 14 and Python 3.10",
   description: "Unofficial - Built by 14 year old Etai Gabbai in Irvine, CA",
 };
 

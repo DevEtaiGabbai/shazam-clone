@@ -3,6 +3,7 @@ import { WrapText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Icons } from '@/components/ui/global/icons';
+import Image from 'next/image';
 
 const Page = () => {
   return (
@@ -102,6 +103,24 @@ const Page = () => {
             In this blog post, we'll delve into how to build a basic version of a Shazam-like application. We'll explore the underlying concepts of audio recognition without getting bogged down in overly technical jargon. By the end, you'll understand how audio fingerprinting works and how different components come together to create a music recognition system.
           </p>
 
+          {/* Lifecycle Image */}
+          <div className="my-12">
+            <h3 className="text-2xl font-bold mb-4 text-primary">System Architecture</h3>
+            <div className="relative bg-card/50 rounded-xl p-6 border border-border">
+              <Image
+                src="/lifecycle.png"
+                alt="Shazam Clone System Architecture"
+                width={800}
+                height={500}
+                className="w-full h-auto"
+              />
+              <p className="mt-4 text-sm text-muted-foreground">
+                The diagram above illustrates the complete lifecycle of a song recognition request:
+                from audio capture through fingerprint generation to final song identification.
+              </p>
+            </div>
+          </div>
+
           {/* Understanding Audio Fingerprinting */}
           <h2 id="understanding-audio-fingerprinting" className="text-3xl font-bold mt-12 mb-6 text-primary">Understanding Audio Fingerprinting</h2>
           <h3 className="text-2xl font-semibold mb-4 text-foreground">What is Audio Fingerprinting?</h3>
@@ -139,13 +158,17 @@ const Page = () => {
           </p>
           <h4 className="text-xl font-semibold mt-6 mb-3 text-foreground">Sampling Rate and Channels</h4>
           <ul className="space-y-2 text-muted-foreground">
-            <li className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary"></span>
-              <strong className="text-foreground">Sampling Rate</strong>: This is the number of samples of audio carried per second, measured in Hertz (Hz). A common sampling rate for audio processing is 16,000 Hz (16 kHz), which balances quality and processing efficiency.
+            <li className="flex items-start gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary mt-2"></span>
+              <div>
+                <strong className="text-foreground">Sampling Rate:</strong> The number of audio samples per second, measured in Hertz (Hz). We typically use 16,000 Hz (16 kHz) for efficient processing while maintaining quality.
+              </div>
             </li>
-            <li className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary"></span>
-              <strong className="text-foreground">Channels</strong>: To simplify processing, we often convert stereo audio (two channels) to mono (one channel).
+            <li className="flex items-start gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary mt-2"></span>
+              <div>
+                <strong className="text-foreground">Channels:</strong> We convert stereo audio (two channels) to mono (one channel) for simplified processing.
+              </div>
             </li>
           </ul>
           <p className="text-lg leading-relaxed text-muted-foreground">
