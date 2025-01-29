@@ -4,7 +4,11 @@ Created by Etai Gabbai on 8/13/2024
 
 ## How It Works 🤔
 
-This Shazam clone leverages a Next.js front-end to capture a 4-second audio sample. The sample is sent to a Google Cloud Function (backend) written in Python 3.10 for detection. The backend processes the audio and returns the result, including confidence scores, possible matches, and their respective song information.
+![System Architecture](https://raw.githubusercontent.com/DevEtaiGabbai/shazam-clone/main/public/lifecycle.png)
+
+This Shazam clone leverages a Next.js front-end to capture a 4-second audio sample. The sample is sent to a Google Cloud Function (backend) written in Python 3.10 for detection. The backend processes the audio and returns the result, including confidence scores, possible matches, and their respective song information. The system architecture is shown above. 
+
+For a more in-depth explanation, see: [How it Works](https://shazam-clone.vercel.app/how-it-works)
 
 ## Requirements
 
