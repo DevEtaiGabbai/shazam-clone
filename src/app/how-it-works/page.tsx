@@ -298,120 +298,158 @@ const Page = () => {
           <p className="text-lg leading-relaxed text-muted-foreground">
             Let's walk through the entire process:
           </p>
-          <ol className="list-decimal list-inside space-y-4 pl-4 my-6">
-            <li className="text-lg text-muted-foreground"><strong className="text-foreground">User Interaction</strong>:
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  The user opens the app and taps a button to identify a song.
+          <ol className="space-y-8 list-none pl-0 my-8">
+            <li className="relative">
+              <div className="flex items-center mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full border border-border bg-card text-foreground font-semibold mr-3">1</span>
+                <strong className="text-xl text-foreground">User Interaction</strong>
+              </div>
+              <ul className="space-y-3 ml-11">
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>The user opens the app and taps a button to identify a song.</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  The app prompts for microphone access if not already granted.
-                </li>
-              </ul>
-            </li>
-            <li className="text-lg text-muted-foreground"><strong className="text-foreground">Audio Recording</strong>:
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  The app records a short audio clip from the microphone.
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  A visual indicator shows that the app is "listening."
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>The app prompts for microphone access if not already granted.</span>
                 </li>
               </ul>
             </li>
-            <li className="text-lg text-muted-foreground"><strong className="text-foreground">Audio Transmission</strong>:
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  The recorded audio is sent to the backend server.
+
+            <li className="relative">
+              <div className="flex items-center mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full border border-border bg-card text-foreground font-semibold mr-3">2</span>
+                <strong className="text-xl text-foreground">Audio Recording</strong>
+              </div>
+              <ul className="space-y-3 ml-11">
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>The app records a short audio clip from the microphone.</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  The app may display a "searching" message or animation.
-                </li>
-              </ul>
-            </li>
-            <li className="text-lg text-muted-foreground"><strong className="text-foreground">Backend Processing</strong>:
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  The backend normalizes the audio.
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  It processes the audio to generate the fingerprint.
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  It sends the fingerprint to the song database or recognition service.
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>A visual indicator shows that the app is "listening."</span>
                 </li>
               </ul>
             </li>
-            <li className="text-lg text-muted-foreground"><strong className="text-foreground">Matching and Response</strong>:
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  The recognition service compares the fingerprint against its database.
+
+            <li className="relative">
+              <div className="flex items-center mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full border border-border bg-card text-foreground font-semibold mr-3">3</span>
+                <strong className="text-xl text-foreground">Audio Transmission</strong>
+              </div>
+              <ul className="space-y-3 ml-11">
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>The recorded audio is sent to the backend server.</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  If a match is found, song details are returned.
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  If no match is found, a "no match" response is sent.
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>The app may display a "searching" message or animation.</span>
                 </li>
               </ul>
             </li>
-            <li className="text-lg text-muted-foreground"><strong className="text-foreground">Displaying Results</strong>:
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  The frontend receives the response.
+
+            <li className="relative">
+              <div className="flex items-center mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full border border-border bg-card text-foreground font-semibold mr-3">4</span>
+                <strong className="text-xl text-foreground">Backend Processing</strong>
+              </div>
+              <ul className="space-y-3 ml-11">
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>The backend normalizes the audio.</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  For a match:
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-primary"></span>
-                      <strong className="text-foreground">Displays Song Information</strong>: Shows the song title, artist, and album art.
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>It processes the audio to generate the fingerprint.</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>It sends the fingerprint to the song database or recognition service.</span>
+                </li>
+              </ul>
+            </li>
+
+            <li className="relative">
+              <div className="flex items-center mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full border border-border bg-card text-foreground font-semibold mr-3">5</span>
+                <strong className="text-xl text-foreground">Matching and Response</strong>
+              </div>
+              <ul className="space-y-3 ml-11">
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>The recognition service compares the fingerprint against its database.</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>If a match is found, song details are returned.</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>If no match is found, a "no match" response is sent.</span>
+                </li>
+              </ul>
+            </li>
+
+            <li className="relative">
+              <div className="flex items-center mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full border border-border bg-card text-foreground font-semibold mr-3">6</span>
+                <strong className="text-xl text-foreground">Displaying Results</strong>
+              </div>
+              <ul className="space-y-3 ml-11">
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>The frontend receives the response.</span>
+                </li>
+                <li>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                    <span>For a match:</span>
+                  </div>
+                  <ul className="space-y-3 ml-6">
+                    <li className="flex items-center gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                      <span><strong className="text-foreground">Displays Song Information:</strong> Shows the song title, artist, and album art.</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-primary"></span>
-                      <strong className="text-foreground">Interactive Links</strong>: Provides options to listen to the song on streaming platforms.
+                    <li className="flex items-center gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                      <span><strong className="text-foreground">Interactive Links:</strong> Provides options to listen to the song on streaming platforms.</span>
                     </li>
                   </ul>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  For no match:
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-primary"></span>
-                      <strong className="text-foreground">Notification</strong>: Informs the user that the song couldn't be identified.
+                <li>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                    <span>For no match:</span>
+                  </div>
+                  <ul className="space-y-3 ml-6">
+                    <li className="flex items-center gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                      <span><strong className="text-foreground">Notification:</strong> Informs the user that the song couldn't be identified.</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-primary"></span>
-                      <strong className="text-foreground">Retry Option</strong>: Allows the user to try again.
+                    <li className="flex items-center gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                      <span><strong className="text-foreground">Retry Option:</strong> Allows the user to try again.</span>
                     </li>
                   </ul>
                 </li>
               </ul>
             </li>
-            <li className="text-lg text-muted-foreground"><strong className="text-foreground">User Engagement</strong>:
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  The user can interact with the results.
+
+            <li className="relative">
+              <div className="flex items-center mb-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full border border-border bg-card text-foreground font-semibold mr-3">7</span>
+                <strong className="text-xl text-foreground">User Engagement</strong>
+              </div>
+              <ul className="space-y-3 ml-11">
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>The user can interact with the results.</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-primary"></span>
-                  The app may store recent searches for future reference.
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground"></span>
+                  <span>The app may store recent searches for future reference.</span>
                 </li>
               </ul>
             </li>
