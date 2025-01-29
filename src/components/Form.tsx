@@ -2,11 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Result from './Result';
+import NoResult from './NoResult';
 import { Button } from '@/components/ui/button';
 import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle } from './ui/drawer';
 import { toast } from 'sonner';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Search } from 'lucide-react';
 
 interface Action {
   uri: any;
@@ -34,6 +36,7 @@ const Form: React.FC<{ audioBlob: any, onResultReceived: () => void }> = ({ audi
   const [resultsData, setResultsData] = useState<Track[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [noMatches, setNoMatches] = useState<boolean>(false);
+  const [showNoResult, setShowNoResult] = useState<boolean>(false);
   const [previousShazams, setPreviousShazams] = useState<boolean>(false);
   const [showMyMusic, setShowMyMusic] = useState<boolean>(false);
 
@@ -83,8 +86,8 @@ const Form: React.FC<{ audioBlob: any, onResultReceived: () => void }> = ({ audi
 
   useEffect(() => {
     if (noMatches) {
-      toast.warning(`Couldn't Detect a Song`);
-      setTimeout(() => setNoMatches(true), 500);
+      console.log('no matches');
+      setShowNoResult(true);
     }
   }, [noMatches]);
 
@@ -92,10 +95,25 @@ const Form: React.FC<{ audioBlob: any, onResultReceived: () => void }> = ({ audi
     setShowMyMusic(!showMyMusic);
   };
 
+  const handleTryAgain = () => {
+    setShowNoResult(false);
+    setNoMatches(false);
+    onResultReceived();
+  };
+
+  const handleCloseNoResult = () => {
+    setShowNoResult(false);
+    setNoMatches(false);
+  };
+
   return (
     <div>
       <form onSubmit={onSubmit}></form>
-      {/* Only render Result components if noMatches is false */}
+      <NoResult 
+        open={showNoResult}
+        onClose={handleCloseNoResult}
+        onTryAgain={handleTryAgain}
+      />
       {resultsData.length > 0 && !noMatches && resultsData.map((resultData, index) => (
         <div key={index}>
           <Result
@@ -109,7 +127,7 @@ const Form: React.FC<{ audioBlob: any, onResultReceived: () => void }> = ({ audi
       {previousShazams && (
         <>
           <Button variant="ghost" className='bg-secondary-foreground text-white w-full mb-10' onClick={handleShowMyMusicClick}>
-            My Shazam&apos;s
+            My Music
           </Button>
           {showMyMusic && (
             <Drawer open={showMyMusic}>
@@ -123,11 +141,11 @@ const Form: React.FC<{ audioBlob: any, onResultReceived: () => void }> = ({ audi
                 <div className="pr-4 pl-4">
                   {resultsData.map((resultData, index) => (
                     <Link href={resultData.hub?.providers.find(provider => provider.type === 'SPOTIFY')?.actions[0].uri} key={`link-${index}`}>
-                      <div className='mt-2 mb-2 rounded-xl bg-secondary transition-all border-gray-800'>
+                      <div className='mt-2 mb-2 rounded-xl bg-[#2c2c2e] transition-all border-gray-800'>
                         <div className="flex items-center p-3">
                           <Image width={100} height={100} src={resultData.images.coverart} alt="Cover Art" className="h-10 w-10 rounded-md mr-4" />
                           <div>
-                            <div className="text-md font-semibold px-2 item-body text-black">{resultData.title}</div>
+                            <div className="text-md font-semibold px-2 item-body text-white">{resultData.title}</div>
                             <div className="text-sm px-2 item-body text-muted-foreground" style={{ marginTop: '-0.2rem' }}>
                               {resultData.subtitle}
                             </div>
@@ -136,7 +154,7 @@ const Form: React.FC<{ audioBlob: any, onResultReceived: () => void }> = ({ audi
                       </div>
                     </Link>
                   ))}
-                  <Button className="w-full mb-3" onClick={() => setShowMyMusic(false)}>Close</Button>
+                  <Button variant="secondary" className="w-full mb-3" onClick={() => setShowMyMusic(false)}>Close</Button>
                 </div>
               </DrawerContent>
             </Drawer>
